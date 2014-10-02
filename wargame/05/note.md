@@ -1,5 +1,5 @@
 [ebp-0x54]
 
 b * 0x08048a5e
-x/20cb 0xffffd504
+x/30cb 0xffffd504
 x/30cb 0x08048f17

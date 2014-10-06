@@ -3,3 +3,6 @@
 b * 0x08048a5e
 x/30cb 0xffffd504
 x/30cb 0x08048f17
+
+== get random
+x/30xb 0x804a548

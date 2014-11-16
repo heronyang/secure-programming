@@ -1,0 +1,20 @@
+
+main:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+08048080 <_start>:
+ 8048080:	ba 00 00 00 00       	mov    $0x0,%edx
+ 8048085:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 804808a:	bb 98 90 04 08       	mov    $0x8049098,%ebx
+ 804808f:	b8 0b 00 00 00       	mov    $0xb,%eax
+ 8048094:	cd 80                	int    $0x80
+
+Disassembly of section .data:
+
+08049098 <msg>:
+ 8049098:	2f                   	das    
+ 8049099:	62 69 6e             	bound  %ebp,0x6e(%ecx)
+ 804909c:	2f                   	das    
+ 804909d:	73 68                	jae    8049107 <_end+0x67>

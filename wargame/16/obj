@@ -1,0 +1,5 @@
+#!/bin/sh
+objdump -d libc.so | grep 'fprintf>:'
+objdump -d libc.so | grep 'system>:'
+objdump -d libc.so | grep 'execve>:'
+objdump -d libc.so | grep 'main>:'

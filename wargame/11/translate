@@ -1,0 +1,4 @@
+#!/bin/sh
+python -c 'print "\x90\x31\xc0"' > sc.bin
+msfencode BufferRegister=ECX -i sc.bin -e x86/alpha_mixed -t python -b '\x69\x49'
+# msfencode BufferRegister=ECX -i sc.bin -e x86/alpha_mixed -t python

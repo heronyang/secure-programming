@@ -1,0 +1,2 @@
+#!/bin/bash
+./nphw1 < shellcode2/output

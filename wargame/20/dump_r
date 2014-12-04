@@ -1,0 +1,31 @@
+
+notweb:     file format elf32-i386
+
+DYNAMIC RELOCATION RECORDS
+OFFSET   TYPE              VALUE 
+0804affc R_386_GLOB_DAT    __gmon_start__
+0804b080 R_386_COPY        stdin
+0804b0a0 R_386_COPY        stdout
+0804b00c R_386_JUMP_SLOT   strstr
+0804b010 R_386_JUMP_SLOT   strcmp
+0804b014 R_386_JUMP_SLOT   printf
+0804b018 R_386_JUMP_SLOT   fflush
+0804b01c R_386_JUMP_SLOT   memcpy
+0804b020 R_386_JUMP_SLOT   bzero
+0804b024 R_386_JUMP_SLOT   fgets
+0804b028 R_386_JUMP_SLOT   fclose
+0804b02c R_386_JUMP_SLOT   chdir
+0804b030 R_386_JUMP_SLOT   fseek
+0804b034 R_386_JUMP_SLOT   fread
+0804b038 R_386_JUMP_SLOT   __gmon_start__
+0804b03c R_386_JUMP_SLOT   exit
+0804b040 R_386_JUMP_SLOT   strlen
+0804b044 R_386_JUMP_SLOT   __libc_start_main
+0804b048 R_386_JUMP_SLOT   write
+0804b04c R_386_JUMP_SLOT   ftell
+0804b050 R_386_JUMP_SLOT   fopen
+0804b054 R_386_JUMP_SLOT   strncpy
+0804b058 R_386_JUMP_SLOT   strtok
+0804b05c R_386_JUMP_SLOT   sprintf
+
+
